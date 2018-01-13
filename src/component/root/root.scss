@@ -1,9 +1,11 @@
 @import '_colors';
 body {
   background: $bgcolor;
-  color: 'red',
+  color: green;
 }
 
 .test {
-  color: 'red',
+  font-Size: 50px;
+  width: 250px;
+  height: 250px;
 }

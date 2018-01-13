@@ -3,13 +3,13 @@
 // =============================================================================
 import React from 'react';
 
-import {style} from './root.scss';
+import style from './root.scss';
 
 console.log(style)
 
 const Root = () =>
-<div>
-  <div>RootRootRootRootRoot</div>
+<div className={style.test}>
+  RootRootRootRootRoot
 </div>;
 
 Root.displayName = 'App/Root';

@@ -11,9 +11,9 @@ const paths = {
   SRC: path.resolve(__dirname, '../../src'),
 };
 
-const extractPlugin = new ExtractTextPlugin({
-  filename: './build/bundle.css',
-});
+// const extractPlugin = new ExtractTextPlugin({
+//   filename: './build/bundle.css',
+// });
 
 // Webpack configuration
 module.exports = {
@@ -30,7 +30,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.join(paths.ENTRY, 'index.html'),
     }),
-    extractPlugin,
+    new ExtractTextPlugin("bundle.css"),
   ],
 
   module: {
@@ -44,11 +44,30 @@ module.exports = {
       //   test: /\.css$/,
       //   use: ['style-loader', 'css-loader'],
       // },
+      // {
+      //   test: /\.scss|sass|css$/i,
+      //   use: extractPlugin.extract({
+      //     use: ['css-loader', 'sass-loader'],
+      //     fallback: 'style-loader',
+      //   }),
+      // },
       {
         test: /\.scss$/,
-        use: extractPlugin.extract({
-          use: ['css-loader', 'sass-loader'],
+        exclude: /node_modules/,
+        use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
+          use: [
+            {
+              loader: 'css-loader',
+              query: {
+                modules: true,
+                sourceMap: true,
+                importLoaders: 2,
+                localIdentName: '[name]__[local]___[hash:base64:5]',
+              },
+            },
+            'sass-loader',
+          ],
         }),
       },
       {
