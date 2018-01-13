@@ -11,19 +11,28 @@ const paths = {
   SRC: path.resolve(__dirname, '../../src'),
 };
 
+const extractPlugin = new ExtractTextPlugin({
+  filename: './build/bundle.css',
+});
+
 // Webpack configuration
 module.exports = {
   entry: path.join(paths.ENTRY, 'index.js'),
+
   output: {
     path: paths.BUILD,
     filename: 'bundle.js',
   },
+
+  devtool: 'sourcemap',
+
   plugins: [
     new HtmlWebpackPlugin({
       template: path.join(paths.ENTRY, 'index.html'),
     }),
-    new ExtractTextPlugin('bundle.css'),
+    extractPlugin,
   ],
+
   module: {
     rules: [
       {
@@ -31,10 +40,15 @@ module.exports = {
         exclude: /node_modules/,
         use: ['babel-loader'],
       },
+      // {
+      //   test: /\.css$/,
+      //   use: ['style-loader', 'css-loader'],
+      // },
       {
-        test: /\.css$/,
-        loader: ExtractTextPlugin.extract({
-          use: 'css-loader',
+        test: /\.scss$/,
+        use: extractPlugin.extract({
+          use: ['css-loader', 'sass-loader'],
+          fallback: 'style-loader',
         }),
       },
       {
@@ -48,10 +62,4 @@ module.exports = {
       },
     ],
   },
-  // resolve: {
-  //   alias: {
-  //     '': './src',
-  //   },
-  //   extensions: ['.js', '.jsx'],
-  // },
 };
