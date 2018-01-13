@@ -1,17 +1,15 @@
-import React, { Component } from 'react';
-import { render } from 'react-dom';
+/* global window */
+import React from 'react';
+import {render} from 'react-dom';
+// import createHistory from 'history/createBrowserHistory';
+// import store from '/store';
+//
+// import 'reset-css';
+// import './global.css';
 
-import './index.css';
-import keenImage from '../assets/images/keen.png';
-export default class Hello extends Component {
-  render() {
-    return (
-      <div>
-        Hello from react
-        <img src={ keenImage } alt='Commander Keen' />
-      </div>
-    );
-  }
-}
+import Root from '../src/component/root';
 
-render(<Hello />, document.getElementById('app'));
+render(
+  <Root />,
+  window.document.getElementById('app')
+);

@@ -42,10 +42,10 @@ module.exports = {
         use: {
           loader: 'file-loader',
           options: {
-            outputPath: 'images/',
+            name: '[path][name].[ext]',
           },
-        }
-      }
+        },
+      },
     ],
   },
   resolve: {
