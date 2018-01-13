@@ -7,7 +7,7 @@ import {render} from 'react-dom';
 // import 'reset-css';
 // import './global.css';
 
-import Root from '../src/component/root';
+import Root from 'component/root';
 
 render(
   <Root />,

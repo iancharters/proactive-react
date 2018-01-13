@@ -49,6 +49,16 @@ module.exports = {
     ],
   },
   resolve: {
+    alias: {
+      action: path.resolve(__dirname, `${paths.SRC}/action/`),
+      asset: path.resolve(__dirname, `${paths.SRC}/asset/`),
+      component: path.resolve(__dirname, `${paths.SRC}/component/`),
+      config: path.resolve(__dirname, `${paths.SRC}/config/`),
+      constant: path.resolve(__dirname, `${paths.SRC}/constant/`),
+      reducer: path.resolve(__dirname, `${paths.SRC}/reducer/`),
+      store: path.resolve(__dirname, `${paths.SRC}/store/`),
+      util: path.resolve(__dirname, `${paths.SRC}/util/`),
+    },
     extensions: ['.js', '.jsx'],
   },
 };
