@@ -5,8 +5,6 @@ import React from 'react';
 
 import style from './root.scss';
 
-console.log(style)
-
 const Root = () =>
 <div className={style.test}>
   RootRootRootRootRoot

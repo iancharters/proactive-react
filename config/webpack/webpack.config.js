@@ -40,19 +40,8 @@ module.exports = {
         exclude: /node_modules/,
         use: ['babel-loader'],
       },
-      // {
-      //   test: /\.css$/,
-      //   use: ['style-loader', 'css-loader'],
-      // },
-      // {
-      //   test: /\.scss|sass|css$/i,
-      //   use: extractPlugin.extract({
-      //     use: ['css-loader', 'sass-loader'],
-      //     fallback: 'style-loader',
-      //   }),
-      // },
       {
-        test: /\.scss$/,
+        test: /\.(scss|css)$/,
         exclude: /node_modules/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
