@@ -2,6 +2,7 @@
 // Import modules
 // =============================================================================
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const postCSSConfig = require('../postcss/postcss.config');
@@ -11,10 +12,6 @@ const paths = {
   ENTRY: path.resolve(__dirname, '../../entry'),
   SRC: path.resolve(__dirname, '../../src'),
 };
-
-// const extractPlugin = new ExtractTextPlugin({
-//   filename: './build/bundle.css',
-// });
 
 // Webpack configuration
 module.exports = {
@@ -31,7 +28,12 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.join(paths.ENTRY, 'index.html'),
     }),
-    new ExtractTextPlugin("bundle.css"),
+    new ExtractTextPlugin('bundle.css'),
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify('development'),
+      },
+    }),
   ],
 
   module: {
@@ -61,8 +63,8 @@ module.exports = {
               options: {
                 config: {
                   path: 'config/postcss/postcss.config.js',
-                }
-              }
+                },
+              },
             },
             'sass-loader',
           ],
