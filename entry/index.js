@@ -1,15 +1,28 @@
 /* global window */
+// =============================================================================
+// Import modules
+// =============================================================================
+import {parse} from 'url';
 import React from 'react';
 import {render} from 'react-dom';
-// import createHistory from 'history/createBrowserHistory';
-// import store from '/store';
-//
-// import 'reset-css';
-// import './global.css';
 
+// =============================================================================
+// Import store
+// =============================================================================
+import store from '/store';
+
+// =============================================================================
+// Import components
+// =============================================================================
 import Root from 'component/root';
 
+// =============================================================================
+// Import css
+// =============================================================================
+//import 'reset-css';
+import './global.scss';
+
 render(
-  <Root />,
+  <Root store={store} />,
   window.document.getElementById('app')
 );

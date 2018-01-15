@@ -22,7 +22,7 @@ module.exports = {
     filename: 'bundle.js',
   },
 
-  devtool: 'sourcemap',
+  // devtool: 'sourcemap',
 
   plugins: [
     new HtmlWebpackPlugin({
