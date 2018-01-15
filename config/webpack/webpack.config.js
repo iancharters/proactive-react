@@ -4,6 +4,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const postCSSConfig = require('../postcss/postcss.config');
 
 const paths = {
   BUILD: path.resolve(__dirname, '../../build'),
@@ -41,7 +42,7 @@ module.exports = {
         use: ['babel-loader'],
       },
       {
-        test: /\.(scss|css)$/,
+        test: /\.scss$/,
         exclude: /node_modules/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
@@ -54,6 +55,14 @@ module.exports = {
                 importLoaders: 2,
                 localIdentName: '[name]__[local]___[hash:base64:5]',
               },
+            },
+            {
+              loader: 'postcss-loader',
+              options: {
+                config: {
+                  path: 'config/postcss/postcss.config.js',
+                }
+              }
             },
             'sass-loader',
           ],
