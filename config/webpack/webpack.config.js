@@ -28,7 +28,11 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.join(paths.ENTRY, 'index.html'),
     }),
-    new ExtractTextPlugin('bundle.css'),
+    new ExtractTextPlugin({
+      filename: 'bundle.css',
+      allChunks: true,
+      disable: process.env.NODE_ENV !== 'production',
+    }),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('development'),
